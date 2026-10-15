@@ -71,4 +71,30 @@
  *           type: number
  *           example: 4500
  */
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Category:
+ *       type: object
+ *       properties:
+ *         id: { type: integer, example: 1 }
+ *         name: { type: string, example: Bebidas }
+ *         description: { type: string, example: Productos líquidos }
+ *     Order:
+ *       type: object
+ *       properties:
+ *         id: { type: integer, example: 1 }
+ *         customer: { type: string, example: Ana Pérez }
+ *         total: { type: number, example: 125.5 }
+ *         status: { type: string, enum: [Pendiente, Enviado, Entregado] }
+ *     Supplier:
+ *       type: object
+ *       properties:
+ *         id: { type: integer, example: 1 }
+ *         name: { type: string, example: Proveedor Central }
+ *         email: { type: string, format: email }
+ *         phone: { type: string, example: 3001234567 }
+ */
 export {};

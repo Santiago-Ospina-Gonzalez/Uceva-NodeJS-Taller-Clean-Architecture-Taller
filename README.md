@@ -20,6 +20,15 @@ La documentación interactiva está en `http://localhost:3000/api/docs`.
 El contrato OpenAPI se genera desde los comentarios de las rutas y los schemas
 en `src/infrastructure/web/config`.
 
+Además de Usuarios y Productos, la API expone los módulos Categorías,
+Pedidos y Proveedores:
+
+```text
+GET /api/categories/{countCategories}
+GET /api/orders/{countOrders}
+GET /api/suppliers/{countSuppliers}
+```
+
 Para validar y generar la salida compilada:
 
 ```powershell

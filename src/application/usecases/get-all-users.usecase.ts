@@ -1,5 +1,6 @@
 import { User } from "../../domain/models/user.model";
 import { UserRepository } from "../../domain/repositories/user.repository";
+import { CustomError } from "../../infrastructure/web/erros/custom.error";
 
 /**
  * Caso de uso para obtener un listado de usuarios.
@@ -51,6 +52,11 @@ export class GetAllUsersUseCase {
    * ```
    */
   execute(countUsers: number): Promise<User[]> {
+    if (!Number.isInteger(countUsers) || countUsers < 1 || countUsers > 100) {
+      return Promise.reject(
+        CustomError.badRequest('countUsers debe ser un entero entre 1 y 100')
+      );
+    }
     return this.userRepository.getAll(countUsers);
   }
 }

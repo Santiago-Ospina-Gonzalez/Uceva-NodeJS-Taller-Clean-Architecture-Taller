@@ -1,5 +1,6 @@
 import { Product } from "../../domain/models/product.model";
 import { ProductRepository } from "../../domain/repositories/product.repository";
+import { CustomError } from "../../infrastructure/web/erros/custom.error";
 
 /**
  * Caso de uso para obtener un listado de productos.
@@ -53,6 +54,11 @@ export class GetAllProductsUseCase {
    * ```
    */
   execute(countProducts: number): Promise<Product[]> {
+    if (!Number.isInteger(countProducts) || countProducts < 1 || countProducts > 100) {
+      return Promise.reject(
+        CustomError.badRequest('countProducts debe ser un entero entre 1 y 100')
+      );
+    }
     return this.productRepository.getAll(countProducts);
   }
 }

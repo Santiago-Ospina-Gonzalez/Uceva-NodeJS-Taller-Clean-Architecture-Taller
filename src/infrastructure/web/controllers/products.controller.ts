@@ -51,11 +51,9 @@ export class ProductsController {
   getAllProducts = (req: Request, res: Response): void => {
     const { countProducts } = req.params;
 
-    setTimeout(() => {
-      this.getAllProductsUseCase
+    this.getAllProductsUseCase
       .execute(Number(countProducts))
-      .then((products) => res.status(201).json(products))
+      .then((products) => res.status(200).json(products))
       .catch((error) => HandleError.error(error, res));
-    }, 3000);
   };
 }

@@ -48,11 +48,9 @@ export class UsersController {
   getAllUsers = (req: Request, res: Response): void => {
     const { countUsers } = req.params;
 
-    setTimeout(() => {
-      this.getAllUsersUseCase
+    this.getAllUsersUseCase
       .execute(Number(countUsers))
-      .then((users) => res.status(201).json(users))
+      .then((users) => res.status(200).json(users))
       .catch((error) => HandleError.error(error, res));
-    }, 3000);
   };
 }
